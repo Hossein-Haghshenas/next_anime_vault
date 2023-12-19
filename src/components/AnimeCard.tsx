@@ -21,7 +21,7 @@ function AnimeCard({ anime }: Prop) {
   return (
     <div className="max-w-sm rounded relative w-full">
       <div className="relative w-full h-[37vh]">
-        <Image src={anime.image.original} alt={anime.name} fill className="rounded-xl" />
+        <Image src={`${process.env.NEXT_PUBLIC_IMAGE_HOST}${anime.image.original}`} alt={anime.name} fill className="rounded-xl" />
       </div>
       <div className="py-4 flex flex-col gap-3">
         <div className="flex justify-between items-center gap-1">
