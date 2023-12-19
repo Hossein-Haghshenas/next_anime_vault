@@ -5,10 +5,12 @@ import { useInView } from "react-intersection-observer";
 // api handler function
 import { fetchAnime } from "@/app/action";
 // anime card and anime type
-import AnimeCard, { AnimeProp } from "./AnimeCard";
+import AnimeCard from "./AnimeCard";
+
+export type AnimeCard = JSX.Element;
 
 const LoadMore = () => {
-  const [data, setData] = useState<AnimeProp[]>([]);
+  const [data, setData] = useState<AnimeCard[]>([]);
   const [page, setPage] = useState(2);
 
   const { ref, inView } = useInView();
@@ -25,11 +27,7 @@ const LoadMore = () => {
   return (
     <>
       {/* anime card */}
-      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-        {data.map((item: AnimeProp, index: number) => (
-          <AnimeCard key={item.id} anime={item} index={index} />
-        ))}
-      </section>
+      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">{data}</section>
 
       {/* spinner */}
       <section className="flex justify-center items-center w-full">
